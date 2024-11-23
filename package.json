@@ -16,6 +16,15 @@
   "peerDependencies": {
     "valibot": "^1.0.0-beta.6"
   },
+  "bugs": {
+    "url": "https://github.com/winterzz-dev/valibot-pretty-error/issues"
+  },
+  "homepage": "https://github.com/winterzz-dev/valibot-pretty-error",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:winterzz-dev/valibot-pretty-error.git"
+  },
+
   "devDependencies": {
     "@types/node": "^22.9.1",
     "eslint": "^8.57.1",
