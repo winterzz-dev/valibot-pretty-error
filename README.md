@@ -1,20 +1,24 @@
 # valibot-pretty-error
 
-Небольшая утилита для преобразования ошибок валидации библиотеки `valibot` в читаемые строки. Не требует сложной конфигурации
+![main workflow](https://github.com/winterzz-dev/valibot-pretty-error/actions/workflows/publish.yml/badge.svg)
 
-Вдохновлено библиотекой [zod-error](https://github.com/andrewvo89/zod-error) и собрано с помощью [smartbundle](https://github.com/XaveScor/smartbundle).
+[Same page on russian.](https://github.com/winterzz-dev/valibot-pretty-error/blob/master/README.ru.md)
 
-## Установка
+A small utility to convert `valibot` library validation errors into readable strings. Does not require complex configuration.
 
-Устанивите библиотеку любым пакетным менеджером:    
+Inspired by the [zod-error](https://github.com/andrewvo89/zod-error) library and built with [smartbundle](https://github.com/XaveScor/smartbundle).
+
+## Installation
+
+Install the library with any package manager:
 
 ```bash
 npm install valibot-pretty-error
 ```
 
-## Использование
+## Usage
 
-Для базового случая достаточно импортировать метод `createErrorWrapper` из пакета:
+For the base case, just import the `createErrorWrapper` method from the package:
 
 ```typescript
 import { createErrorWrapper } from 'valibot-pretty-error';
@@ -27,7 +31,7 @@ prettify(result.issues);
 
 ## API
 
-Для настройки содержания ошибок необходимо передать объект с параметрами в качестве аргумента в вызов функции `createErrorWrapper`:
+To customize the contents of errors, pass an object with parameters as an argument to the `createErrorWrapper` function call:
 
 ```typescript
 import { TransformExtraData } from './types'
@@ -40,13 +44,13 @@ const prettify = createErrorWrapper({
 
 ### Параметры
 
-Для описания параметров используются следующие свойства:
+The following properties are used to describe the parameters:
 
-| Имя                                 | Описание                                                                                                                                                                                      | Тип данных                                                     |
-|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| include (не обязательный)           | Массив строк, с перечислением полей, которые должны быть в итоговом сообщении. Для удобства рекомендуется использовать объект `TransformExtraData`, например, `TransformExtraData.Timestamp`. | string[]                                                       |
-| prefix (не обязательный)            | Префикс, который будет использован для каждого сообщения о ошибкею.                                                                                                                           | string                                                         |
-| delimiter (не обязательный)         | Строка, которая будет использоваться для объединения частей сообщения, по умолчанию: `~`.                                                                                                     | string                                                         |
-| parameterPrefixes (не обязательный) | Объект с префиксами для параметров частей сообщения, по умолчанию: объект `BASE_PREFIXES`                                                                                                     | Partial<Record<string, string>                                 |                                                                                                                                                                                               |                                |
-| transformer (не обязательный)       | Функция-трансформер для преобразования данных в итоговое сообщение.                                                                                                                           | (data: TransformerData, options: TransformerOptions) => string |
+| Name                         | Description                                                                                                                                                                             | Data type                                                      |
+|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| include (optional)           | An array of strings, listing the fields that should be in the final message. For convenience it is recommended to use `TransformExtraData` object, e.g. `TransformExtraData.Timestamp`. | string[]                                                       |
+| prefix (optional)            | The prefix to be used for each error message.                                                                                                                                           | string                                                         |
+| delimiter (optional)         | The string that will be used to combine parts of the message, default: `~`.                                                                                                             | string                                                         |
+| parameterPrefixes (optional) | Prefix object for the parameters of the message parts, default: `BASE_PREFIXES` object.                                                                                                 | Partial<Record<string, string>                                 |                                                                                                                                                                                               |                                |
+| transformer (optional)       | Transformer function for converting data into a summary message.                                                                                                                        | (data: TransformerData, options: TransformerOptions) => string |
 
